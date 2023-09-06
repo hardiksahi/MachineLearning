@@ -1,0 +1,193 @@
+[08/23/23 07:58:24] INFO     Kedro project google-analytics-propensity                                                   session.py:364
+                    WARNING  /Users/hardiksahi/miniconda3/envs/personal_env/lib/python3.9/site-packages/kedro/framework warnings.py:109
+                             /session/session.py:266: FutureWarning: ConfigLoader will be deprecated in Kedro 0.19.                    
+                             Please use the OmegaConfigLoader instead. To consult the documentation for                                
+                             OmegaConfigLoader, see here:                                                                              
+                             https://docs.kedro.org/en/stable/configuration/advanced_configuration.html#omegaconfigload                
+                             er                                                                                                        
+                               warnings.warn(                                                                                          
+                                                                                                                                       
+[08/23/23 07:58:25] WARNING  /Users/hardiksahi/miniconda3/envs/personal_env/lib/python3.9/site-packages/kedro/framework warnings.py:109
+                             /project/__init__.py:281: UserWarning: The 'google_analytics_propensity.pipelines.common'                 
+                             module does not expose a 'create_pipeline' function, so no pipelines defined therein will                 
+                             be returned by 'find_pipelines'.                                                                          
+                               warnings.warn(                                                                                          
+                                                                                                                                       
+                    INFO     Loading data from 'train.raw_data' (CSVDataSet)...                                     data_catalog.py:475
+                    INFO     Loading data from 'params:raw_data' (MemoryDataset)...                                 data_catalog.py:475
+                    INFO     Running node: normalize_dataset: normalize_dataset([train.raw_data,params:raw_data]) ->        node.py:331
+                             [train.intermediate_data]                                                                                 
+[08/23/23 07:58:27] INFO     Saving 0th subset to disk                                                                      nodes.py:53
+                    INFO     Saving data to 'train.intermediate_data' (PartitionedDataset)...                       data_catalog.py:514
+[08/23/23 07:58:29] INFO     Saving 1th subset to disk                                                                      nodes.py:53
+[08/23/23 07:58:30] INFO     Saving data to 'train.intermediate_data' (PartitionedDataset)...                       data_catalog.py:514
+[08/23/23 07:58:31] INFO     Saving 2th subset to disk                                                                      nodes.py:53
+[08/23/23 07:58:32] INFO     Saving data to 'train.intermediate_data' (PartitionedDataset)...                       data_catalog.py:514
+[08/23/23 07:58:34] INFO     Saving 3th subset to disk                                                                      nodes.py:53
+                    INFO     Saving data to 'train.intermediate_data' (PartitionedDataset)...                       data_catalog.py:514
+[08/23/23 07:58:36] INFO     Saving 4th subset to disk                                                                      nodes.py:53
+                    INFO     Saving data to 'train.intermediate_data' (PartitionedDataset)...                       data_catalog.py:514
+[08/23/23 07:58:39] INFO     Saving 5th subset to disk                                                                      nodes.py:53
+                    INFO     Saving data to 'train.intermediate_data' (PartitionedDataset)...                       data_catalog.py:514
+[08/23/23 07:58:42] INFO     Saving 6th subset to disk                                                                      nodes.py:53
+                    INFO     Saving data to 'train.intermediate_data' (PartitionedDataset)...                       data_catalog.py:514
+[08/23/23 07:58:44] INFO     Saving 7th subset to disk                                                                      nodes.py:53
+                    INFO     Saving data to 'train.intermediate_data' (PartitionedDataset)...                       data_catalog.py:514
+[08/23/23 07:58:47] INFO     Saving 8th subset to disk                                                                      nodes.py:53
+                    INFO     Saving data to 'train.intermediate_data' (PartitionedDataset)...                       data_catalog.py:514
+[08/23/23 07:58:49] INFO     Saving 9th subset to disk                                                                      nodes.py:53
+                    INFO     Saving data to 'train.intermediate_data' (PartitionedDataset)...                       data_catalog.py:514
+[08/23/23 07:58:52] INFO     Saving 10th subset to disk                                                                     nodes.py:53
+                    INFO     Saving data to 'train.intermediate_data' (PartitionedDataset)...                       data_catalog.py:514
+[08/23/23 07:58:54] INFO     Saving 11th subset to disk                                                                     nodes.py:53
+                    INFO     Saving data to 'train.intermediate_data' (PartitionedDataset)...                       data_catalog.py:514
+[08/23/23 07:58:56] INFO     Saving 12th subset to disk                                                                     nodes.py:53
+                    INFO     Saving data to 'train.intermediate_data' (PartitionedDataset)...                       data_catalog.py:514
+[08/23/23 07:58:58] INFO     Saving 13th subset to disk                                                                     nodes.py:53
+[08/23/23 07:58:59] INFO     Saving data to 'train.intermediate_data' (PartitionedDataset)...                       data_catalog.py:514
+[08/23/23 07:59:01] INFO     Saving 14th subset to disk                                                                     nodes.py:53
+                    INFO     Saving data to 'train.intermediate_data' (PartitionedDataset)...                       data_catalog.py:514
+[08/23/23 07:59:03] INFO     Saving 15th subset to disk                                                                     nodes.py:53
+                    INFO     Saving data to 'train.intermediate_data' (PartitionedDataset)...                       data_catalog.py:514
+[08/23/23 07:59:06] INFO     Saving 16th subset to disk                                                                     nodes.py:53
+                    INFO     Saving data to 'train.intermediate_data' (PartitionedDataset)...                       data_catalog.py:514
+[08/23/23 07:59:08] INFO     Saving 17th subset to disk                                                                     nodes.py:53
+                    INFO     Saving data to 'train.intermediate_data' (PartitionedDataset)...                       data_catalog.py:514
+[08/23/23 07:59:12] INFO     Saving 18th subset to disk                                                                     nodes.py:53
+                    INFO     Saving data to 'train.intermediate_data' (PartitionedDataset)...                       data_catalog.py:514
+[08/23/23 07:59:14] INFO     Saving 19th subset to disk                                                                     nodes.py:53
+                    INFO     Saving data to 'train.intermediate_data' (PartitionedDataset)...                       data_catalog.py:514
+[08/23/23 07:59:16] INFO     Saving 20th subset to disk                                                                     nodes.py:53
+                    INFO     Saving data to 'train.intermediate_data' (PartitionedDataset)...                       data_catalog.py:514
+[08/23/23 07:59:19] INFO     Saving 21th subset to disk                                                                     nodes.py:53
+                    INFO     Saving data to 'train.intermediate_data' (PartitionedDataset)...                       data_catalog.py:514
+[08/23/23 07:59:21] INFO     Saving 22th subset to disk                                                                     nodes.py:53
+                    INFO     Saving data to 'train.intermediate_data' (PartitionedDataset)...                       data_catalog.py:514
+[08/23/23 07:59:23] INFO     Saving 23th subset to disk                                                                     nodes.py:53
+                    INFO     Saving data to 'train.intermediate_data' (PartitionedDataset)...                       data_catalog.py:514
+[08/23/23 07:59:25] INFO     Saving 24th subset to disk                                                                     nodes.py:53
+                    INFO     Saving data to 'train.intermediate_data' (PartitionedDataset)...                       data_catalog.py:514
+[08/23/23 07:59:28] INFO     Saving 25th subset to disk                                                                     nodes.py:53
+                    INFO     Saving data to 'train.intermediate_data' (PartitionedDataset)...                       data_catalog.py:514
+[08/23/23 07:59:30] INFO     Saving 26th subset to disk                                                                     nodes.py:53
+                    INFO     Saving data to 'train.intermediate_data' (PartitionedDataset)...                       data_catalog.py:514
+[08/23/23 07:59:33] INFO     Saving 27th subset to disk                                                                     nodes.py:53
+                    INFO     Saving data to 'train.intermediate_data' (PartitionedDataset)...                       data_catalog.py:514
+[08/23/23 07:59:35] INFO     Saving 28th subset to disk                                                                     nodes.py:53
+                    INFO     Saving data to 'train.intermediate_data' (PartitionedDataset)...                       data_catalog.py:514
+[08/23/23 07:59:37] INFO     Saving 29th subset to disk                                                                     nodes.py:53
+                    INFO     Saving data to 'train.intermediate_data' (PartitionedDataset)...                       data_catalog.py:514
+[08/23/23 07:59:40] INFO     Saving 30th subset to disk                                                                     nodes.py:53
+                    INFO     Saving data to 'train.intermediate_data' (PartitionedDataset)...                       data_catalog.py:514
+[08/23/23 07:59:42] INFO     Saving 31th subset to disk                                                                     nodes.py:53
+                    INFO     Saving data to 'train.intermediate_data' (PartitionedDataset)...                       data_catalog.py:514
+[08/23/23 07:59:45] INFO     Saving 32th subset to disk                                                                     nodes.py:53
+                    INFO     Saving data to 'train.intermediate_data' (PartitionedDataset)...                       data_catalog.py:514
+[08/23/23 07:59:48] INFO     Saving 33th subset to disk                                                                     nodes.py:53
+                    INFO     Saving data to 'train.intermediate_data' (PartitionedDataset)...                       data_catalog.py:514
+[08/23/23 07:59:50] INFO     Saving 34th subset to disk                                                                     nodes.py:53
+                    INFO     Saving data to 'train.intermediate_data' (PartitionedDataset)...                       data_catalog.py:514
+[08/23/23 07:59:53] INFO     Saving 35th subset to disk                                                                     nodes.py:53
+                    INFO     Saving data to 'train.intermediate_data' (PartitionedDataset)...                       data_catalog.py:514
+[08/23/23 07:59:55] INFO     Saving 36th subset to disk                                                                     nodes.py:53
+                    INFO     Saving data to 'train.intermediate_data' (PartitionedDataset)...                       data_catalog.py:514
+[08/23/23 07:59:58] INFO     Saving 37th subset to disk                                                                     nodes.py:53
+                    INFO     Saving data to 'train.intermediate_data' (PartitionedDataset)...                       data_catalog.py:514
+[08/23/23 08:00:01] INFO     Saving 38th subset to disk                                                                     nodes.py:53
+                    INFO     Saving data to 'train.intermediate_data' (PartitionedDataset)...                       data_catalog.py:514
+[08/23/23 08:00:03] INFO     Saving 39th subset to disk                                                                     nodes.py:53
+                    INFO     Saving data to 'train.intermediate_data' (PartitionedDataset)...                       data_catalog.py:514
+[08/23/23 08:00:05] INFO     Saving 40th subset to disk                                                                     nodes.py:53
+[08/23/23 08:00:06] INFO     Saving data to 'train.intermediate_data' (PartitionedDataset)...                       data_catalog.py:514
+[08/23/23 08:00:08] INFO     Saving 41th subset to disk                                                                     nodes.py:53
+                    INFO     Saving data to 'train.intermediate_data' (PartitionedDataset)...                       data_catalog.py:514
+[08/23/23 08:00:11] INFO     Saving 42th subset to disk                                                                     nodes.py:53
+                    INFO     Saving data to 'train.intermediate_data' (PartitionedDataset)...                       data_catalog.py:514
+[08/23/23 08:00:14] INFO     Saving 43th subset to disk                                                                     nodes.py:53
+                    INFO     Saving data to 'train.intermediate_data' (PartitionedDataset)...                       data_catalog.py:514
+[08/23/23 08:00:16] INFO     Saving 44th subset to disk                                                                     nodes.py:53
+                    INFO     Saving data to 'train.intermediate_data' (PartitionedDataset)...                       data_catalog.py:514
+[08/23/23 08:00:19] INFO     Saving 45th subset to disk                                                                     nodes.py:53
+                    INFO     Saving data to 'train.intermediate_data' (PartitionedDataset)...                       data_catalog.py:514
+[08/23/23 08:00:21] INFO     Saving 46th subset to disk                                                                     nodes.py:53
+                    INFO     Saving data to 'train.intermediate_data' (PartitionedDataset)...                       data_catalog.py:514
+[08/23/23 08:00:23] INFO     Saving 47th subset to disk                                                                     nodes.py:53
+                    INFO     Saving data to 'train.intermediate_data' (PartitionedDataset)...                       data_catalog.py:514
+[08/23/23 08:00:26] INFO     Saving 48th subset to disk                                                                     nodes.py:53
+                    INFO     Saving data to 'train.intermediate_data' (PartitionedDataset)...                       data_catalog.py:514
+[08/23/23 08:00:28] INFO     Saving 49th subset to disk                                                                     nodes.py:53
+                    INFO     Saving data to 'train.intermediate_data' (PartitionedDataset)...                       data_catalog.py:514
+[08/23/23 08:00:31] INFO     Saving 50th subset to disk                                                                     nodes.py:53
+                    INFO     Saving data to 'train.intermediate_data' (PartitionedDataset)...                       data_catalog.py:514
+[08/23/23 08:00:33] INFO     Saving 51th subset to disk                                                                     nodes.py:53
+                    INFO     Saving data to 'train.intermediate_data' (PartitionedDataset)...                       data_catalog.py:514
+[08/23/23 08:00:35] INFO     Saving 52th subset to disk                                                                     nodes.py:53
+[08/23/23 08:00:36] INFO     Saving data to 'train.intermediate_data' (PartitionedDataset)...                       data_catalog.py:514
+[08/23/23 08:00:38] INFO     Saving 53th subset to disk                                                                     nodes.py:53
+                    INFO     Saving data to 'train.intermediate_data' (PartitionedDataset)...                       data_catalog.py:514
+[08/23/23 08:00:41] INFO     Saving 54th subset to disk                                                                     nodes.py:53
+                    INFO     Saving data to 'train.intermediate_data' (PartitionedDataset)...                       data_catalog.py:514
+[08/23/23 08:00:43] INFO     Saving 55th subset to disk                                                                     nodes.py:53
+                    INFO     Saving data to 'train.intermediate_data' (PartitionedDataset)...                       data_catalog.py:514
+[08/23/23 08:00:45] INFO     Saving 56th subset to disk                                                                     nodes.py:53
+                    INFO     Saving data to 'train.intermediate_data' (PartitionedDataset)...                       data_catalog.py:514
+[08/23/23 08:00:48] INFO     Saving 57th subset to disk                                                                     nodes.py:53
+                    INFO     Saving data to 'train.intermediate_data' (PartitionedDataset)...                       data_catalog.py:514
+[08/23/23 08:00:50] INFO     Saving 58th subset to disk                                                                     nodes.py:53
+                    INFO     Saving data to 'train.intermediate_data' (PartitionedDataset)...                       data_catalog.py:514
+[08/23/23 08:00:53] INFO     Saving 59th subset to disk                                                                     nodes.py:53
+                    INFO     Saving data to 'train.intermediate_data' (PartitionedDataset)...                       data_catalog.py:514
+[08/23/23 08:00:55] INFO     Saving 60th subset to disk                                                                     nodes.py:53
+                    INFO     Saving data to 'train.intermediate_data' (PartitionedDataset)...                       data_catalog.py:514
+[08/23/23 08:00:58] INFO     Saving 61th subset to disk                                                                     nodes.py:53
+                    INFO     Saving data to 'train.intermediate_data' (PartitionedDataset)...                       data_catalog.py:514
+[08/23/23 08:01:01] INFO     Saving 62th subset to disk                                                                     nodes.py:53
+                    INFO     Saving data to 'train.intermediate_data' (PartitionedDataset)...                       data_catalog.py:514
+[08/23/23 08:01:03] INFO     Saving 63th subset to disk                                                                     nodes.py:53
+                    INFO     Saving data to 'train.intermediate_data' (PartitionedDataset)...                       data_catalog.py:514
+[08/23/23 08:01:05] INFO     Saving 64th subset to disk                                                                     nodes.py:53
+                    INFO     Saving data to 'train.intermediate_data' (PartitionedDataset)...                       data_catalog.py:514
+[08/23/23 08:01:08] INFO     Saving 65th subset to disk                                                                     nodes.py:53
+                    INFO     Saving data to 'train.intermediate_data' (PartitionedDataset)...                       data_catalog.py:514
+[08/23/23 08:01:10] INFO     Saving 66th subset to disk                                                                     nodes.py:53
+                    INFO     Saving data to 'train.intermediate_data' (PartitionedDataset)...                       data_catalog.py:514
+[08/23/23 08:01:12] INFO     Saving 67th subset to disk                                                                     nodes.py:53
+                    INFO     Saving data to 'train.intermediate_data' (PartitionedDataset)...                       data_catalog.py:514
+[08/23/23 08:01:15] INFO     Saving 68th subset to disk                                                                     nodes.py:53
+                    INFO     Saving data to 'train.intermediate_data' (PartitionedDataset)...                       data_catalog.py:514
+[08/23/23 08:01:17] INFO     Saving 69th subset to disk                                                                     nodes.py:53
+                    INFO     Saving data to 'train.intermediate_data' (PartitionedDataset)...                       data_catalog.py:514
+[08/23/23 08:01:20] INFO     Saving 70th subset to disk                                                                     nodes.py:53
+                    INFO     Saving data to 'train.intermediate_data' (PartitionedDataset)...                       data_catalog.py:514
+[08/23/23 08:01:23] INFO     Saving 71th subset to disk                                                                     nodes.py:53
+                    INFO     Saving data to 'train.intermediate_data' (PartitionedDataset)...                       data_catalog.py:514
+[08/23/23 08:01:25] INFO     Saving 72th subset to disk                                                                     nodes.py:53
+                    INFO     Saving data to 'train.intermediate_data' (PartitionedDataset)...                       data_catalog.py:514
+[08/23/23 08:01:27] INFO     Saving 73th subset to disk                                                                     nodes.py:53
+                    INFO     Saving data to 'train.intermediate_data' (PartitionedDataset)...                       data_catalog.py:514
+[08/23/23 08:01:30] INFO     Saving 74th subset to disk                                                                     nodes.py:53
+                    INFO     Saving data to 'train.intermediate_data' (PartitionedDataset)...                       data_catalog.py:514
+[08/23/23 08:01:32] INFO     Saving 75th subset to disk                                                                     nodes.py:53
+                    INFO     Saving data to 'train.intermediate_data' (PartitionedDataset)...                       data_catalog.py:514
+[08/23/23 08:01:34] INFO     Saving 76th subset to disk                                                                     nodes.py:53
+                    INFO     Saving data to 'train.intermediate_data' (PartitionedDataset)...                       data_catalog.py:514
+[08/23/23 08:01:36] INFO     Saving 77th subset to disk                                                                     nodes.py:53
+                    INFO     Saving data to 'train.intermediate_data' (PartitionedDataset)...                       data_catalog.py:514
+[08/23/23 08:01:39] INFO     Saving 78th subset to disk                                                                     nodes.py:53
+                    INFO     Saving data to 'train.intermediate_data' (PartitionedDataset)...                       data_catalog.py:514
+[08/23/23 08:01:41] INFO     Saving 79th subset to disk                                                                     nodes.py:53
+                    INFO     Saving data to 'train.intermediate_data' (PartitionedDataset)...                       data_catalog.py:514
+[08/23/23 08:01:44] INFO     Saving 80th subset to disk                                                                     nodes.py:53
+                    INFO     Saving data to 'train.intermediate_data' (PartitionedDataset)...                       data_catalog.py:514
+[08/23/23 08:01:46] INFO     Saving 81th subset to disk                                                                     nodes.py:53
+                    INFO     Saving data to 'train.intermediate_data' (PartitionedDataset)...                       data_catalog.py:514
+[08/23/23 08:01:49] INFO     Saving 82th subset to disk                                                                     nodes.py:53
+                    INFO     Saving data to 'train.intermediate_data' (PartitionedDataset)...                       data_catalog.py:514
+[08/23/23 08:01:52] INFO     Saving 83th subset to disk                                                                     nodes.py:53
+                    INFO     Saving data to 'train.intermediate_data' (PartitionedDataset)...                       data_catalog.py:514
+[08/23/23 08:01:54] INFO     Saving 84th subset to disk                                                                     nodes.py:53
+                    INFO     Saving data to 'train.intermediate_data' (PartitionedDataset)...                       data_catalog.py:514
+[08/23/23 08:01:55] INFO     Saving 85th subset to disk                                                                     nodes.py:53
+                    INFO     Saving data to 'train.intermediate_data' (PartitionedDataset)...                       data_catalog.py:514
+                    INFO     Completed 1 out of 1 tasks                                                         sequential_runner.py:85
+                    INFO     Pipeline execution completed successfully.                                                   runner.py:105
