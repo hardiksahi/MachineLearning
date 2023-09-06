@@ -1,0 +1,18 @@
+# This is a boilerplate parameters config generated for pipeline 'handle_raw_data'
+# using Kedro 0.18.3.
+#
+# Documentation for this file format can be found in "Parameters"
+# Link: https://kedro.readthedocs.io/en/0.18.3/kedro_project_setup/configuration.html#parameters
+
+raw_data:
+  date_column: date
+  json_column_list:
+    - totals
+    - device
+    - geoNetwork
+    - trafficSource
+  drop_column_list:
+    - hits
+    - customDimensions
+  column_as_string_list:
+    - fullVisitorId
