@@ -38,13 +38,17 @@ def normalize_dataset(input_dfs: Iterator[pd.DataFrame], params: Dict[str, Any])
             df = df.drop([json_col], axis=1)
             df = df.merge(expanded_json_column_df, left_index=True, right_index=True)
 
+        # ## Step 3: Get number of hits from hit list
+        # df.loc[:, "hits_column_length"] = df["hits"].apply(lambda ll: len(ll))
+        # df = df.drop(["hits"], axis=1)
+
         ## Step 3: Set datatype of fullVisitorId as str
         column_as_string_list = params["column_as_string_list"]
         for col in column_as_string_list:
             df.loc[:, col] = df[col].astype(str)
 
-        ## Step 4: Get unique row identifer
-        df.loc[:, "unique_row_identifier"] = (
+        ## Step 4: Get unique session identifer
+        df.loc[:, "unique_session_identifier"] = (
             df["fullVisitorId"].astype(str) + "_" + df["visitId"].astype(str)
         )
 

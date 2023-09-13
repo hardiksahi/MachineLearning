@@ -12,7 +12,7 @@ raw_data:
     - geoNetwork
     - trafficSource
   drop_column_list:
-    - hits
     - customDimensions
+    - hits
   column_as_string_list:
     - fullVisitorId
