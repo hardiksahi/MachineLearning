@@ -5,6 +5,7 @@ generated using Kedro 0.18.3
 import pandas as pd
 import json
 from typing import Any, Dict, Iterator
+from datetime import datetime
 import logging
 
 from ..common.common_helpers import clean_column_names
@@ -47,12 +48,23 @@ def normalize_dataset(input_dfs: Iterator[pd.DataFrame], params: Dict[str, Any])
         for col in column_as_string_list:
             df.loc[:, col] = df[col].astype(str)
 
-        ## Step 4: Get unique session identifer
+        ## Step 4: Clean column names:
+        df.columns = clean_column_names(df.columns)
+
+        ## Step 5: Get unique session identifer
         df.loc[:, "unique_session_identifier"] = (
-            df["fullVisitorId"].astype(str) + "_" + df["visitId"].astype(str)
+            df["full_visitor_id"].astype(str) + "_" + df["visit_id"].astype(str)
         )
 
-        ## Step 5: Clean column names:
-        df.columns = clean_column_names(df.columns)
+        ## Step 6: Get utc based date time
+        df.loc[:, "utc_visit_start_time"] = pd.to_datetime(
+            df["visit_start_time"], unit="s"
+        )
+
+        ## Step 7: Convert date column to pandas datatime
+        df.loc[:, "date_object"] = df["date"].apply(
+            lambda d: datetime.strptime(str(d), "%Y%m%d")
+        )
+
         logger.info(f"Saving {i}th subset to disk")
         yield {f"subset_{i}": df}
