@@ -19,3 +19,19 @@ train.intermediate_data:
     save_args:
       compression: "GZIP"
   filename_suffix: ".parquet"
+
+train.schema_imposed_data:
+  type: PartitionedDataSet
+  path: "data/03_primary/train/schema_impose"
+  dataset:
+    type: google_analytics_propensity.io.custom_parquet_dataset.CustomParquetDataset
+    compression: "zstd"
+  filename_suffix: ".parquet"
+
+train.primary_data:
+  type: PartitionedDataSet
+  path: "data/03_primary/train/clean"
+  dataset:
+    type: google_analytics_propensity.io.custom_parquet_dataset.CustomParquetDataset
+    compression: "zstd"
+  filename_suffix: ".parquet"

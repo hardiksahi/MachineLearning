@@ -1,0 +1,30 @@
+# This is a boilerplate parameters config generated for pipeline 'handle_schema'
+# using Kedro 0.18.12.
+#
+# Documentation for this file format can be found in "Parameters"
+# Link: https://docs.kedro.org/en/0.18.12/kedro_project_setup/configuration.html#parameters
+
+schema_impose:
+  enforced_column_name_type_dict_path: data/config_files/enforced_column_name_type_dict.json
+  column_superset_list: data/config_files/column_superset_list.txt
+  
+handle_columns:
+  drop_column_list:
+    - visit_number
+    - social_engagement_type
+    - traffic_source_campaign_code
+    - geo_network_latitude
+    - geo_network_longitude
+    - geo_network_network_location
+    - device_browser_version
+    - device_browser_size
+    - device_operating_system_version
+    - device_mobile_device_branding
+    - device_mobile_device_model
+    - device_mobile_input_selector
+    - device_mobile_device_info
+    - device_mobile_device_marketing_name
+    - device_flash_version
+    - device_language
+    - device_screen_colors
+    - device_screen_resolution
