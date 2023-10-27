@@ -28,4 +28,9 @@ handle_columns:
     - device_language
     - device_screen_colors
     - device_screen_resolution
+    - totals_new_visits
+    - totals_session_quality_dim
+    - totals_bounces
+    - totals_total_transaction_revenue
+    - traffic_source_campaign
   

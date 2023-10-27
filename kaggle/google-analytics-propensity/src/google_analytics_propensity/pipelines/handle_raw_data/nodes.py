@@ -61,7 +61,7 @@ def normalize_dataset(input_dfs: Iterator[pd.DataFrame], params: Dict[str, Any])
             df["visit_start_time"], unit="s"
         )
 
-        ## Step 7: Convert date column to pandas datatime
+        # Step 7: Convert date column to pandas datatime
         df.loc[:, "date_object"] = df["date"].apply(
             lambda d: datetime.strptime(str(d), "%Y%m%d")
         )
