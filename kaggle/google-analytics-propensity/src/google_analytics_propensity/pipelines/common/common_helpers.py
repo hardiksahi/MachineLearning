@@ -48,6 +48,6 @@ def get_appropriate_pyarrow_class(datatype_string: str) -> Union[pa.DataType, An
         "bool": pa.bool_(),
         "list_of_string": pa.list_(pa.string()),
         "timestamp_utc": pa.timestamp("us", tz="UTC"),
-        "time64": pa.time64("us"),
+        "timestamp": pa.timestamp("us"),
     }
     return pyarrow_datatype_map[datatype_string]
