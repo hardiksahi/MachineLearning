@@ -1,8 +1,10 @@
 import pandas as pd
 import inflection
+import pyarrow as pa
+from typing import Any, List, Union
 
 
-def clean_column_names(column_list):
+def clean_column_names(column_list: List[str]):
     column_name_series = pd.Series(column_list)
 
     ## Step 1: Replace $ with ''
@@ -31,3 +33,21 @@ def clean_column_names(column_list):
     )
 
     return column_name_series.tolist()
+
+
+def get_appropriate_pyarrow_class(datatype_string: str) -> Union[pa.DataType, Any]:
+    pyarrow_datatype_map = {
+        "string": pa.string(),
+        "float32": pa.float32(),
+        "float64": pa.float64(),
+        "uint8": pa.uint8(),
+        "uint32": pa.uint32(),
+        "uint64": pa.uint64(),
+        "int32": pa.int32(),
+        "int64": pa.int64(),
+        "bool": pa.bool_(),
+        "list_of_string": pa.list_(pa.string()),
+        "timestamp_utc": pa.timestamp("us", tz="UTC"),
+        "timestamp": pa.timestamp("us"),
+    }
+    return pyarrow_datatype_map[datatype_string]
