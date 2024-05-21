@@ -2,7 +2,8 @@
 import pandas as pd
 import numpy as np
 import torch
-from torch.nn import Module, LSTM, Dropout, Linear, MSELoss
+from torch.nn import Module, LSTM, Dropout, Linear, MSELoss, LayerNorm
+
 import seaborn as sns
 import matplotlib.pyplot as plt
 from sklearn.preprocessing import MinMaxScaler
@@ -16,24 +17,66 @@ class Sequence(Module):
         # self.sequence_len = sequence_len
         self.hidden_size = hidden_size
         self.input_size = input_size
-        self.lstm = LSTM(
+        self.lstm1 = LSTM(
             input_size=self.input_size,
             hidden_size=self.hidden_size,
-            num_layers=4,
+            num_layers=1,
             bias=True,
             batch_first=True,
-            dropout=0.2,
         )
-        self.dropout = Dropout(p=0.2)
+        self.layernorm1 = LayerNorm(self.hidden_size)
+
+        self.lstm2 = LSTM(
+            input_size=self.hidden_size,
+            hidden_size=self.hidden_size,
+            num_layers=1,
+            bias=True,
+            batch_first=True,
+        )
+        self.layernorm2 = LayerNorm(self.hidden_size)
+
+        self.lstm3 = LSTM(
+            input_size=self.hidden_size,
+            hidden_size=self.hidden_size,
+            num_layers=1,
+            bias=True,
+            batch_first=True,
+        )
+        self.layernorm3 = LayerNorm(self.hidden_size)
+
+        self.lstm4 = LSTM(
+            input_size=self.hidden_size,
+            hidden_size=self.hidden_size,
+            num_layers=1,
+            bias=True,
+            batch_first=True,
+        )
+
+        self.layernorm4 = LayerNorm(self.hidden_size)
+        ## No dropout applied here.
         self.linear = Linear(in_features=self.hidden_size, out_features=1, bias=True)
 
     def forward(self, x):
-        out, (hn, cn) = self.lstm(x)
-        out = self.dropout(out)[
-            :, -1, :
-        ]  ## Gets output of last time step after dropout application
-        out = self.linear(out)
-        return out
+        out1, _ = self.lstm1(x)
+        ln1 = self.layernorm1(out1)
+
+        out2, _ = self.lstm2(ln1)
+        ln2 = self.layernorm2(out2)
+
+        out3, _ = self.lstm3(ln2)
+        ln3 = self.layernorm3(out3)
+
+        _, (hn, _) = self.lstm4(ln3)
+        ## Apply layernorm on hidden state correpsonding to last timestep
+        out5 = self.layernorm4(hn)
+
+        # out, (hn, cn) = self.lstm(x)
+
+        # out = self.dropout(out)[
+        #     :, -1, :
+        # ]  ## Gets output of last time step after dropout application
+        final_out = self.linear(out5)
+        return final_out
 
 
 class SequentialData(Dataset):
@@ -147,6 +190,7 @@ if __name__ == "__main__":
     # print(batch1[0].view(-1, seq_len, input_size).size())
 
     model = Sequence(input_size=input_size, hidden_size=hidden_size)
+    print(model)
     n_epochs = 100  # 100
     loss_function = MSELoss()
     optimizer = torch.optim.Adam(model.parameters(), lr=0.0001)
@@ -209,7 +253,7 @@ if __name__ == "__main__":
         if mean_val_loss_for_epoch < best_val_loss:
             best_val_loss = mean_val_loss_for_epoch
             epochs_no_improve = 0
-            torch.save(model.state_dict(), "best_model.pth")
+            torch.save(model.state_dict(), "best_model_with_layernorm.pth")
         else:
             epochs_no_improve += 1
 
@@ -219,15 +263,19 @@ if __name__ == "__main__":
             break
 
     # if early_stop:
-    #     model.load_state_dict(torch.load("best_model.pth"))
+    #     model.load_state_dict(torch.load("best_model_with_layernorm.pth"))
     #     model.eval()
 
     end_time = time.time()
     print(f"Training finished in {(end_time-start_time)/60} min")
-    print("Best model saved at best_model.pth")
+    print("Best model saved at best_model_with_layernorm.pth")
 
     test_prediction_list, test_label_list = predict(
-        test_dataloader, "best_model.pth", input_size, hidden_size, seq_len
+        test_dataloader,
+        "best_model_with_layernorm.pth",
+        input_size,
+        hidden_size,
+        seq_len,
     )
     test_prediction = scaler.inverse_transform(
         test_prediction_list.reshape(-1, 1)
@@ -256,7 +304,7 @@ if __name__ == "__main__":
     lineplt = sns.lineplot(
         data=combined_test_df, x="date", y="stock_price", hue="ttype"
     )
-    lineplt.figure.savefig("test.png")
+    lineplt.figure.savefig("test_with_layerno.png")
 
     # train_loss_df = pd.DataFrame(
     #     {
