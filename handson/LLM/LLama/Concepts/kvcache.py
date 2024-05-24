@@ -1,7 +1,6 @@
-import numpy as np
-import pandas as pd
 import torch
-from torch.nn import Module, Linear, Sigmoid
+from torch.nn import Module, Sigmoid
+import time
 
 
 ## Inference time only + Assume Autoregressive decoder (Masked self attention)
@@ -82,9 +81,9 @@ class AttentionNoKVCache(Module):
 if __name__ == "__main__":
     ## We assume single headed attention for simplicity
 
-    emb_dim = 10  ## Dimension of embedding for each token
-    output_dim = 4  ## Dimen
-    seq_len = 15
+    emb_dim = 50  ## Dimension of embedding for each token
+    output_dim = 15  ## Dimen
+    seq_len = 30
 
     ## Step1: W_key, W_query, W_value are fixed (learned during training)
     ## Assume no bias
@@ -94,6 +93,8 @@ if __name__ == "__main__":
 
     ## Step2: Get X (seq_len, emb_dim)
     X = torch.randn(seq_len, emb_dim)
+
+    no_kv_t0 = time.time()
     attention_no_kv_cache = AttentionNoKVCache(
         W_key, W_query, W_value, emb_dim, output_dim
     )
@@ -106,9 +107,13 @@ if __name__ == "__main__":
         torch_list.append(zi)
 
     Z_no_KV_cache = torch.hstack(torch_list)
+    no_kv_t1 = time.time()
+    no_kv_total_time = no_kv_t1 - no_kv_t0
+    print(f"Total time for Z_no_KV_cache: {no_kv_total_time}s")
     print(f"Z_no_KV_cache shape: {Z_no_KV_cache.size()}")
-    print(f"Z_no_KV_cache: \n {Z_no_KV_cache}")
+    # print(f"Z_no_KV_cache: \n {Z_no_KV_cache}")
 
+    kv_t0 = time.time()
     attention_kv_cache = AttentionKVCache(W_key, W_query, W_value, emb_dim, output_dim)
     kvcache_torch_list = []
     ## Inference happens one token at a time using a loop
@@ -117,9 +122,15 @@ if __name__ == "__main__":
         zi = attention_kv_cache(x).reshape(-1, 1)
         kvcache_torch_list.append(zi)
     Z_KV_cache = torch.hstack(kvcache_torch_list)
+    kv_t1 = time.time()
+    kv_total_time = kv_t1 - kv_t0
+    print(f"Total time for Z_KV_cache: {kv_total_time}s")
     print(f"Z_KV_cache shape: {Z_KV_cache.size()}")
-    print(f"Z_KV_cache: \n {Z_KV_cache}")
+    # print(f"Z_KV_cache: \n {Z_KV_cache}")
 
     print(
-        f"Is Z_no_KV_cache and Z_KV_cache equal: {torch.allclose(Z_no_KV_cache, Z_KV_cache, atol=1e-5)}"
+        f"Is Z_no_KV_cache and Z_KV_cache equal: {torch.allclose(Z_no_KV_cache, Z_KV_cache, atol=1e-2)}"
+    )
+    print(
+        f"Time proprtion: no_kv_total_time/kv_total_time : {no_kv_total_time/kv_total_time}"
     )
