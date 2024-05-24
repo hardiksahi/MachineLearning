@@ -2,12 +2,49 @@
 import pandas as pd
 import numpy as np
 import torch
-from torch.nn import Module, LSTM, Dropout, Linear, MSELoss
+from torch.nn import Module, LSTM, Dropout, Linear, MSELoss, Sigmoid
 import seaborn as sns
 import matplotlib.pyplot as plt
 from sklearn.preprocessing import MinMaxScaler
 from torch.utils.data import DataLoader, Dataset
 import time
+
+
+class GLU(Module):
+    ## gated Linear Unit => Uses Sigmnoid as activation
+    def __init__(self, input_dim, out_dim):
+        super().__init__()
+        self.lin_layer1 = Linear(in_features=input_dim, out_features=out_dim, bias=True)
+        self.lin_layer2 = Linear(in_features=input_dim, out_features=out_dim, bias=True)
+        self.sigmoid = Sigmoid()
+
+    def __call__(self, x):
+        out1 = self.lin_layer1(x)
+        out2 = self.lin_layer2(x)
+        out2 = self.sigmoid(out2)
+        final = out1 * out2
+        return final
+
+
+class SwiGLU(Module):
+    ## Swish Gated Linear Unit => Uses SwishBeta function as activation
+    # def swishBeta()
+    def __init__(self, input_dim, out_dim, beta):
+        super().__init__()
+        self.beta = beta
+        self.lin_layer1 = Linear(in_features=input_dim, out_features=out_dim, bias=True)
+        self.lin_layer2 = Linear(in_features=input_dim, out_features=out_dim, bias=True)
+
+    def __call__(self, x):
+        out1 = self.lin_layer1(x)
+        out2 = self.lin_layer2(x)
+
+        ## Apply SwishBeta function on out2
+        betax = -1 * self.beta * out2
+        inverse = 1 / (1 + torch.exp(betax))
+        final = out2 * inverse
+
+        return out1 * final
 
 
 class Sequence(Module):
@@ -26,6 +63,7 @@ class Sequence(Module):
         )
         self.dropout = Dropout(p=0.2)
         self.linear = Linear(in_features=self.hidden_size, out_features=1, bias=True)
+        # self.linear = SwiGLU(input_dim=self.hidden_size, out_dim=1, beta=1)
 
     def forward(self, x):
         out, (hn, cn) = self.lstm(x)
@@ -147,6 +185,7 @@ if __name__ == "__main__":
     # print(batch1[0].view(-1, seq_len, input_size).size())
 
     model = Sequence(input_size=input_size, hidden_size=hidden_size)
+    print(model)
     n_epochs = 100  # 100
     loss_function = MSELoss()
     optimizer = torch.optim.Adam(model.parameters(), lr=0.0001)
@@ -256,7 +295,7 @@ if __name__ == "__main__":
     lineplt = sns.lineplot(
         data=combined_test_df, x="date", y="stock_price", hue="ttype"
     )
-    lineplt.figure.savefig("test.png")
+    lineplt.figure.savefig("swiglu_test.png")
 
     # train_loss_df = pd.DataFrame(
     #     {
