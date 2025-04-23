@@ -5,3 +5,5 @@ Some of the broad categories of topics are as follows:
 1. Handle high cardinality categorical variables:
   * Target Encoding
   * Weight Of Evidence encoding
+
+2.
