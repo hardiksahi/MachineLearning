@@ -19,6 +19,7 @@ inflection = "^0.5.1"
 kedro-datasets = {extras = ["pandas-csvdataset", "pandas-parquetdataset"], version = "^1.5.3"}
 duckdb = "^0.8.1"
 ibis-framework = {extras = ["duckdb"], version = "^6.1.0"}
+requests = "^2.32.4"
 
 [tool.poetry.group.dev.dependencies]
 black = "^23.7.0"
